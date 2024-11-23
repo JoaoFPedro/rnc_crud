@@ -4,13 +4,13 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { Button, Icon } from "@rneui/base";
 import UserList from "./src/UserList";
-import UserInfo from "./src/UserInfo";
+import UserForm from "./src/UserForm";
 
 
 
 export type RootStackParamList = {
   UserList: undefined; // A tela "Home" não espera parâmetros
-  UserInfo: { itemId: number; otherParam?: string }; // A tela "Details" espera parâmetros
+  UserForm: { itemId: number; otherParam?: string }; // A tela "Details" espera parâmetros
 };
 export default function App() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -26,13 +26,13 @@ export default function App() {
           return {
             title: 'Lista de usuários',
             headerRight: () => (
-              <Button title='+' size="md" color='none' onPress={()=> navigation.navigate('UserInfo',  { itemId: 42, otherParam: 'Detalhes' })} >
+              <Button title='+' size="md" color='none' onPress={()=> navigation.navigate('UserForm',  { itemId: 42, otherParam: 'Detalhes' })} >
                 <Icon name="add" size={25}color='white'/>
               </Button>
             )
           }
         }}  />
-        <Stack.Screen name="UserInfo" component={UserInfo} />
+        <Stack.Screen name="UserForm" component={UserForm} />
       </Stack.Navigator>
     </NavigationContainer>
   );
